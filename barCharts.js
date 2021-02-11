@@ -2,18 +2,18 @@
 // TODO Math for scaling with viewport height and width 
 // Also, condense chart and figure out how the zoom function works
 d3.csv("./data/TRUE_Dataset2.csv", function (data) {
-    let width = 2400;
+    let width = 1000;
     let height = 5100;
     let colorScale = d3.scale.linear()
-                    .domain([0,120])//.domain([0,80])
+                    .domain([0,30])//.domain([0,80])
                     .range(["cyan","orange"])
 
     let widthScale = d3.scale.linear()
-                    .domain([-1,123])//.domain([-1, 81])
+                    .domain([-1,30])//.domain([-1, 81])
                     .range([0,width-520]); // width of the longest bar in this case
 
     let axis = d3.svg.axis()
-                .ticks(20) // # of ticks
+                .ticks(10) // # of ticks
                 .scale(widthScale);
 
     let canvas = d3.select("body").append("svg") // select what element to append the SVG
@@ -27,8 +27,8 @@ d3.csv("./data/TRUE_Dataset2.csv", function (data) {
         .enter()
             .append("rect")
             .attr("width",  d => d.Frequency * 15.3) // Shorthand for "width", function (d) { return d * 10;})
-            .attr("height", 40)
-            .attr("y", (d,i) => i * 60)
+            .attr("height", 20)
+            .attr("y", (d,i) => i * 30)
             .attr("fill", d => colorScale(d.Frequency))
 
     canvas.selectAll("text")
@@ -36,7 +36,8 @@ d3.csv("./data/TRUE_Dataset2.csv", function (data) {
         .enter()
             .append("text")
             .attr("fill", "#000")
-            .attr("y", (d,i) => i * 60 + 26)
+            .attr("y", (d,i) => i * 30 + 13)
+            .attr("x", -110)
             .text(d => d.URLs)
 
     canvas.append("g")
