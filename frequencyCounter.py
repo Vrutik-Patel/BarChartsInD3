@@ -67,5 +67,5 @@ oneBigListEpoch = [int(epoch(dts)) for dts in oneBigList if dts != ""]
 # print(oneBigListEpoch)
 
 print(sorted(oneBigListEpoch))
-with open(f"{filePrefix}dataset{datasetNumber}Epochs.json","w") as f:
+with open(f"./dataForPieChart/{filePrefix}dataset{datasetNumber}Epochs.json","w") as f:
     json.dump(oneBigListEpoch, f)
